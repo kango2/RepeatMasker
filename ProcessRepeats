@@ -923,7 +923,9 @@ CYCLE2:
             . ( $currentAnnot->getOrientation() eq 'C' ? '-' : '+' ) . "\t.\t"
             . "ID=" . $currentAnnot->getPRID()+1 . ";" 
             . "Target \"Motif:"
-            . $currentAnnot->getHitName() . "\" "
+            . $currentAnnot->getHitName() . "\";"
+            . "RepeatType \"Class/Family:"
+						. $currentAnnot->getClassName() . "\" "
             . $currentAnnot->getSubjStart() . " "
             . $currentAnnot->getSubjEnd() . "\n";
       }
@@ -5510,10 +5512,13 @@ sub generateOutput {
       }
       print OUTGFF "ID=" . $printid . ";"
           . "Target \"Motif:"
-          . $currentAnnot->getHitName() . "\" "
+          . $currentAnnot->getHitName() . "\";"
+          . "RepeatType \"Class/Family:"
+					. $currentAnnot->getClassName() . "\" "
           . $currentAnnot->getSubjStart() . " "
           . $currentAnnot->getSubjEnd() . "\n";
-    }
+
+}
 
     if ( !$headerWritten ) {
       my $widthposquery = $colWidths{'BeginAlign'} + $colWidths{'EndAlign'} +
